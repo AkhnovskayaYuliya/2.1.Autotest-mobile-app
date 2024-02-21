@@ -37,38 +37,23 @@ public class MainActivityTest {
 
     @Test
     public void mainActivityTest() {
-        ViewInteraction tabView = onView(
-                allOf(withContentDescription("Tab 1"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.tabs),
-                                        0),
-                                0),
-                        isDisplayed()));
+        ViewInteraction tabView = onView(withContentDescription("Tab 1"));
+        tabView.check(matches(isDisplayed()));
         tabView.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.section_label), withText("Page: 1"),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(withId(R.id.view_pager)))),
-                        isDisplayed()));
+                allOf(withId(R.id.section_label), withText("Page: 1")));
+        textView.check(matches(isDisplayed()));
         textView.check(matches(withText("Page: 1")));
 
-        ViewInteraction tabView2 = onView(
-                allOf(withContentDescription("Tab 2"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.tabs),
-                                        0),
-                                1),
-                        isDisplayed()));
+
+        ViewInteraction tabView2 = onView(withContentDescription("Tab 2"));
+        tabView2.check(matches(isDisplayed()));
         tabView2.perform(click());
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.section_label), withText("Page: 2"),
-                        withParent(allOf(withId(R.id.constraintLayout),
-                                withParent(withId(R.id.view_pager)))),
-                        isDisplayed()));
+                allOf(withId(R.id.section_label), withText("Page: 2")));
+        textView2.check(matches(isDisplayed()));
         textView2.check(matches(withText("Page: 2")));
     }
 
